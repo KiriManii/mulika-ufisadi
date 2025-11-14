@@ -7,11 +7,9 @@
 
 // Report Store
 export { useReportStore } from './reportStore';
-export type { default as ReportStore } from './reportStore';
 
 // Auth Store
 export { useAuthStore } from './authStore';
-export type { default as AuthStore } from './authStore';
 
 // UI Store
 export {
@@ -21,4 +19,3 @@ export {
   useModal,
 } from './uiStore';
 export type { Notification, NotificationType } from './uiStore';
-export type { default as UIStore } from './uiStore';
