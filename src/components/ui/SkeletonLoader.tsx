@@ -1,4 +1,3 @@
-import React from 'react';
 
 interface SkeletonLoaderProps {
   variant?: 'text' | 'card' | 'chart' | 'map';

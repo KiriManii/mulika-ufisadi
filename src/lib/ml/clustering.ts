@@ -256,7 +256,7 @@ function updateCentroids(
           newCentroids.push(centroid as tf.Tensor1D);
         } else {
           // If no points assigned, keep previous centroid or random
-          const randomCentroid = tf.randomUniform([numFeatures]);
+          const randomCentroid = tf.randomUniform([numFeatures]) as tf.Tensor1D;
           newCentroids.push(randomCentroid);
         }
         points.dispose();

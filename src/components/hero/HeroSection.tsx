@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ImageCarousel } from './ImageCarousel';
 import { Button } from '../ui/Button';

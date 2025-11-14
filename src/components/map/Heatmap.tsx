@@ -1,4 +1,3 @@
-import React from 'react';
 import { Source, Layer } from 'react-map-gl';
 import type { HeatmapLayer } from 'mapbox-gl';
 
@@ -159,8 +158,8 @@ export function Heatmap({
 
   return (
     <Source id="heatmap-source" type="geojson" data={geoJsonData}>
-      <Layer {...heatmapLayer} />
-      <Layer {...circleLayer} />
+      <Layer {...(heatmapLayer as any)} />
+      <Layer {...(circleLayer as any)} />
     </Source>
   );
 }

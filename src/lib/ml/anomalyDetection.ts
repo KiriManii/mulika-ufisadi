@@ -79,7 +79,6 @@ export function detectAnomalies(reports: Report[]): AnomalyDetectionResult {
     const anomalyIds = new Set(uniqueAnomalies.map((a) => a.reportId));
 
     // Split reports into anomalous and normal
-    const anomalousReports = reports.filter((r) => anomalyIds.has(r.id));
     const normalReports = reports.filter((r) => !anomalyIds.has(r.id));
 
     // Calculate statistics

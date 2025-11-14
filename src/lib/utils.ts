@@ -3,7 +3,7 @@
  * Mulika Ufisadi - Corruption Reporting Platform
  */
 
-import type { Agency, Category } from '@/types/report';
+import { Agency, Category } from '@/types/report';
 
 /**
  * Formats a number as Kenyan Shillings currency
@@ -144,7 +144,7 @@ export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout | null = null;
+  let timeout: number | null = null;
 
   return function executedFunction(...args: Parameters<T>) {
     const later = () => {

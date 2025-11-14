@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   BarChart,
@@ -224,7 +224,8 @@ export function CountyBreakdown({
             <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
             <XAxis
               dataKey="countyName"
-              tick={{ fill: '#64748B', fontSize: 11, angle: -45, textAnchor: 'end' }}
+              tick={{ fill: '#64748B', fontSize: 11, textAnchor: 'end' }}
+              angle={-45}
               axisLine={{ stroke: '#CBD5E1' }}
               height={120}
             />
