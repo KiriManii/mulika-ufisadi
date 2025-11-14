@@ -1,0 +1,57 @@
+/**
+ * Kenya Counties Data
+ * Mulika Ufisadi - Corruption Reporting Platform
+ * All 47 counties with codes, names, capitals, and regions
+ */
+
+import { County } from '../types/county';
+
+export const COUNTIES: County[] = [
+  { code: 1, name: 'Mombasa', capital: 'Mombasa City', region: 'Coast' },
+  { code: 2, name: 'Kwale', capital: 'Kwale', region: 'Coast' },
+  { code: 3, name: 'Kilifi', capital: 'Kilifi', region: 'Coast' },
+  { code: 4, name: 'Tana River', capital: 'Hola', region: 'Coast' },
+  { code: 5, name: 'Lamu', capital: 'Lamu', region: 'Coast' },
+  { code: 6, name: 'Taita-Taveta', capital: 'Voi', region: 'Coast' },
+  { code: 7, name: 'Garissa', capital: 'Garissa', region: 'North Eastern' },
+  { code: 8, name: 'Wajir', capital: 'Wajir', region: 'North Eastern' },
+  { code: 9, name: 'Mandera', capital: 'Mandera', region: 'North Eastern' },
+  { code: 10, name: 'Marsabit', capital: 'Marsabit', region: 'Eastern' },
+  { code: 11, name: 'Isiolo', capital: 'Isiolo', region: 'Eastern' },
+  { code: 12, name: 'Meru', capital: 'Meru', region: 'Eastern' },
+  { code: 13, name: 'Tharaka-Nithi', capital: 'Chuka', region: 'Eastern' },
+  { code: 14, name: 'Embu', capital: 'Embu', region: 'Eastern' },
+  { code: 15, name: 'Kitui', capital: 'Kitui', region: 'Eastern' },
+  { code: 16, name: 'Machakos', capital: 'Machakos', region: 'Eastern' },
+  { code: 17, name: 'Makueni', capital: 'Wote', region: 'Eastern' },
+  { code: 18, name: 'Nyandarua', capital: 'Ol Kalou', region: 'Central' },
+  { code: 19, name: 'Nyeri', capital: 'Nyeri', region: 'Central' },
+  { code: 20, name: 'Kirinyaga', capital: 'Kerugoya/Kutus', region: 'Central' },
+  { code: 21, name: "Murang'a", capital: "Murang'a", region: 'Central' },
+  { code: 22, name: 'Kiambu', capital: 'Kiambu', region: 'Central' },
+  { code: 23, name: 'Turkana', capital: 'Lodwar', region: 'Rift Valley' },
+  { code: 24, name: 'West Pokot', capital: 'Kapenguria', region: 'Rift Valley' },
+  { code: 25, name: 'Samburu', capital: 'Maralal', region: 'Rift Valley' },
+  { code: 26, name: 'Trans Nzoia', capital: 'Kitale', region: 'Rift Valley' },
+  { code: 27, name: 'Uasin Gishu', capital: 'Eldoret', region: 'Rift Valley' },
+  { code: 28, name: 'Elgeyo-Marakwet', capital: 'Iten', region: 'Rift Valley' },
+  { code: 29, name: 'Nandi', capital: 'Kapsabet', region: 'Rift Valley' },
+  { code: 30, name: 'Baringo', capital: 'Kabarnet', region: 'Rift Valley' },
+  { code: 31, name: 'Laikipia', capital: 'Rumuruti', region: 'Rift Valley' },
+  { code: 32, name: 'Nakuru', capital: 'Nakuru', region: 'Rift Valley' },
+  { code: 33, name: 'Narok', capital: 'Narok', region: 'Rift Valley' },
+  { code: 34, name: 'Kajiado', capital: 'Kajiado', region: 'Rift Valley' },
+  { code: 35, name: 'Kericho', capital: 'Kericho', region: 'Rift Valley' },
+  { code: 36, name: 'Bomet', capital: 'Bomet', region: 'Rift Valley' },
+  { code: 37, name: 'Kakamega', capital: 'Kakamega', region: 'Western' },
+  { code: 38, name: 'Vihiga', capital: 'Vihiga', region: 'Western' },
+  { code: 39, name: 'Bungoma', capital: 'Bungoma', region: 'Western' },
+  { code: 40, name: 'Busia', capital: 'Busia', region: 'Western' },
+  { code: 41, name: 'Siaya', capital: 'Siaya', region: 'Nyanza' },
+  { code: 42, name: 'Kisumu', capital: 'Kisumu', region: 'Nyanza' },
+  { code: 43, name: 'Homa Bay', capital: 'Homa Bay', region: 'Nyanza' },
+  { code: 44, name: 'Migori', capital: 'Migori', region: 'Nyanza' },
+  { code: 45, name: 'Kisii', capital: 'Kisii', region: 'Nyanza' },
+  { code: 46, name: 'Nyamira', capital: 'Nyamira', region: 'Nyanza' },
+  { code: 47, name: 'Nairobi', capital: 'Nairobi City', region: 'Nairobi' },
+];
