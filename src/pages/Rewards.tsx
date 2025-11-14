@@ -4,7 +4,7 @@
  * Reward claiming interface with tiers, FAQ, and claim tracking
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { RewardClaim } from '../components/rewards/RewardClaim';
 

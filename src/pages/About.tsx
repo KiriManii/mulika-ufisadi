@@ -3,7 +3,6 @@
  * Mulika Ufisadi - Corruption Reporting Platform
  */
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, Users, Lock, Database, FileText, Award, CheckCircle, AlertCircle } from 'lucide-react';
 import { Card } from '../components/ui/Card';

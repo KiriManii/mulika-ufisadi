@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, TrendingUp, AlertTriangle, X } from 'lucide-react';
 import { CountyMap } from '@/components/map/CountyMap';
-import { Heatmap, type HeatmapPoint } from '@/components/map/Heatmap';
+import type { HeatmapPoint } from '@/components/map/Heatmap';
 import { MapControls } from '@/components/map/MapControls';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -93,7 +93,6 @@ function generateHeatmapData(countyData: CountyMapData[]): HeatmapPoint[] {
 }
 
 export function Map() {
-  const mapRef = useRef<any>(null);
   const [countyData, setCountyData] = useState<CountyMapData[]>([]);
   const [geoJsonData, setGeoJsonData] = useState<CountyGeoJSON | null>(null);
   const [heatmapData, setHeatmapData] = useState<HeatmapPoint[]>([]);
@@ -249,7 +248,6 @@ export function Map() {
       {/* Map Container */}
       <div className="relative" style={{ height: 'calc(100vh - 240px)' }}>
         <CountyMap
-          ref={mapRef}
           countyData={countyData}
           geoJsonData={showBoundaries ? geoJsonData || undefined : undefined}
           showHeatmap={showHeatmap}

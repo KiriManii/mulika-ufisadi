@@ -4,7 +4,7 @@
  * Main form for submitting corruption reports
  */
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -23,7 +23,6 @@ import {
   Category,
   ReportStatus,
   type Report,
-  type Evidence,
   type Coordinates,
   type ContactMethod,
 } from '../../types/report';
@@ -59,18 +58,6 @@ const evidenceSchema = z.object({
   size: z.number(),
 });
 
-const coordinatesSchema = z.object({
-  latitude: z.number().min(-90).max(90),
-  longitude: z.number().min(-180).max(180),
-  accuracy: z.number().optional(),
-});
-
-const contactMethodSchema = z.object({
-  type: z.enum(['email', 'telegram', 'signal']),
-  value: z.string().min(1, 'Contact value is required'),
-  encrypted: z.boolean(),
-});
-
 const reportSchema = z.object({
   county: z.string().min(1, 'County is required'),
   agency: z.nativeEnum(Agency, { errorMap: () => ({ message: 'Please select an agency' }) }),
@@ -87,18 +74,14 @@ const reportSchema = z.object({
     },
     { message: 'Date cannot be in the future' }
   ),
-  estimatedAmount: z.string().optional().transform((val) => {
-    if (!val || val === '') return undefined;
-    const num = parseFloat(val);
-    return isNaN(num) ? undefined : num;
-  }),
+  estimatedAmount: z.string().optional(),
   description: z
     .string()
     .min(50, 'Description must be at least 50 characters')
     .max(1000, 'Description must not exceed 1000 characters'),
   evidence: z.array(evidenceSchema).max(3, 'Maximum 3 files allowed').optional(),
-  useLocation: z.boolean().default(false),
-  useContactMethod: z.boolean().default(false),
+  useLocation: z.boolean(),
+  useContactMethod: z.boolean(),
   contactMethodType: z.enum(['email', 'telegram', 'signal']).optional(),
   contactMethodValue: z.string().optional(),
 });
@@ -127,6 +110,8 @@ export function ReportForm() {
     defaultValues: {
       county: '',
       categories: [],
+      incidentDate: '',
+      description: '',
       evidence: [],
       useLocation: false,
       useContactMethod: false,
@@ -134,7 +119,6 @@ export function ReportForm() {
   });
 
   const watchCategories = watch('categories');
-  const watchEvidence = watch('evidence');
   const watchUseLocation = watch('useLocation');
   const watchUseContactMethod = watch('useContactMethod');
 
@@ -189,7 +173,7 @@ export function ReportForm() {
         agency: data.agency,
         categories: data.categories,
         incidentDate: new Date(data.incidentDate),
-        estimatedAmount: data.estimatedAmount,
+        estimatedAmount: data.estimatedAmount ? parseFloat(data.estimatedAmount) : undefined,
         description: data.description,
         evidence: data.evidence,
         location: coordinates,
@@ -358,7 +342,6 @@ export function ReportForm() {
                 {...register('incidentDate')}
                 error={errors.incidentDate?.message}
                 required
-                max={new Date().toISOString().split('T')[0]}
               />
 
               <Input

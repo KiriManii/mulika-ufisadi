@@ -1,7 +1,7 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import Map, { Source, Layer, Popup, NavigationControl } from 'react-map-gl';
 import type { MapLayerMouseEvent, ViewState } from 'react-map-gl';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import type { CountyMapData, CountyGeoJSON } from '@/types/county';
 import { Button } from '@/components/ui/Button';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -27,13 +27,10 @@ const initialViewState: Partial<ViewState> = {
 export function CountyMap({
   countyData,
   geoJsonData,
-  showHeatmap = true,
   onCountyClick,
   className = '',
 }: CountyMapProps) {
   const [viewState, setViewState] = useState<Partial<ViewState>>(initialViewState);
-  const [selectedCounty, setSelectedCounty] = useState<CountyMapData | null>(null);
-  const [hoveredCountyCode, setHoveredCountyCode] = useState<number | null>(null);
   const [popupInfo, setPopupInfo] = useState<{
     longitude: number;
     latitude: number;
@@ -100,9 +97,6 @@ export function CountyMap({
   const onHover = useCallback((event: MapLayerMouseEvent) => {
     const feature = event.features?.[0];
     if (feature && feature.properties) {
-      const countyCode = feature.properties.CODE;
-      setHoveredCountyCode(countyCode);
-
       // Change cursor to pointer
       if (event.target) {
         event.target.getCanvas().style.cursor = 'pointer';
@@ -112,7 +106,6 @@ export function CountyMap({
 
   // Handle county leave
   const onLeave = useCallback((event: MapLayerMouseEvent) => {
-    setHoveredCountyCode(null);
     if (event.target) {
       event.target.getCanvas().style.cursor = '';
     }
@@ -127,8 +120,6 @@ export function CountyMap({
         const countyInfo = countyDataMap[countyCode];
 
         if (countyInfo) {
-          setSelectedCounty(countyInfo);
-
           // Set popup at click location
           setPopupInfo({
             longitude: event.lngLat.lng,
@@ -199,8 +190,8 @@ export function CountyMap({
 
         {enhancedGeoJson && (
           <Source id="counties" type="geojson" data={enhancedGeoJson}>
-            <Layer {...countyFillLayer} />
-            <Layer {...countyLineLayer} />
+            <Layer {...(countyFillLayer as any)} />
+            <Layer {...(countyLineLayer as any)} />
           </Source>
         )}
 

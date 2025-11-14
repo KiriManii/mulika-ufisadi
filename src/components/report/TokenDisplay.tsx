@@ -4,7 +4,7 @@
  * Shows the tracking token after successful report submission
  */
 
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';

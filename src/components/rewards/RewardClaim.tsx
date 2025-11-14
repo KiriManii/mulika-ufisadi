@@ -4,7 +4,7 @@
  * Main UI for claiming rewards with multi-step flow
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -13,7 +13,7 @@ import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { VerificationForm } from './VerificationForm';
 import { generateHash } from '../../lib/encryption';
-import type { RewardToken, Reward, RewardTier, RewardStatus } from '../../types/reward';
+import { RewardTier, RewardStatus, type RewardToken, type Reward } from '../../types/reward';
 
 type ClaimStep = 'token' | 'verification' | 'mpesa' | 'success' | 'failed';
 
@@ -35,10 +35,10 @@ type TokenFormData = z.infer<typeof tokenSchema>;
 type MpesaFormData = z.infer<typeof mpesaSchema>;
 
 const REWARD_TIERS: Record<RewardTier, number> = {
-  bronze: 5000,
-  silver: 15000,
-  gold: 50000,
-  platinum: 150000,
+  [RewardTier.Bronze]: 5000,
+  [RewardTier.Silver]: 15000,
+  [RewardTier.Gold]: 50000,
+  [RewardTier.Platinum]: 150000,
 };
 
 export function RewardClaim() {
@@ -154,11 +154,11 @@ export function RewardClaim() {
             const stepNumber = index + 1;
             const isActive = currentStep === step;
             const isCompleted =
-              (['token', 'verification', 'mpesa', 'success'] as const).indexOf(currentStep) >
+              (['token', 'verification', 'mpesa', 'success', 'failed'] as const).indexOf(currentStep) >
               index;
 
             return (
-              <React.Fragment key={step}>
+              <div key={step} className="contents">
                 <div className="flex flex-col items-center">
                   <div
                     className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-300 ${
@@ -207,7 +207,7 @@ export function RewardClaim() {
                     }`}
                   />
                 )}
-              </React.Fragment>
+              </div>
             );
           })}
         </div>
@@ -516,7 +516,7 @@ function validateToken(token: string): RewardToken | null {
 function getRewardForToken(token: RewardToken): Reward {
   // Mock reward calculation based on report verification score
   // In production, this would be calculated based on actual verification
-  const tiers: RewardTier[] = ['bronze', 'silver', 'gold', 'platinum'];
+  const tiers: RewardTier[] = [RewardTier.Bronze, RewardTier.Silver, RewardTier.Gold, RewardTier.Platinum];
   const randomTier = tiers[Math.floor(Math.random() * tiers.length)];
 
   return {

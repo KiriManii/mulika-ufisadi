@@ -4,7 +4,8 @@
  * Text analysis, sentiment analysis, and keyword extraction
  */
 
-import type { Report, Category } from '@/types/report';
+import { Category } from '@/types/report';
+import type { Report } from '@/types/report';
 
 export interface TextAnalysisResult {
   sentiment: Sentiment;
@@ -84,7 +85,7 @@ export function analyzeText(text: string): TextAnalysisResult {
     const cleanedText = cleanText(text);
     const words = tokenize(cleanedText);
 
-    const sentiment = analyzeSentiment(words, cleanedText);
+    const sentiment = analyzeSentiment(words);
     const keywords = extractKeywords(words);
     const textStatistics = calculateTextStatistics(text);
     const readabilityScore = calculateReadabilityScore(textStatistics);
@@ -128,10 +129,9 @@ function tokenize(text: string): string[] {
 /**
  * Performs basic sentiment analysis
  * @param words - Array of words
- * @param text - Full text
  * @returns Sentiment analysis result
  */
-function analyzeSentiment(words: string[], text: string): Sentiment {
+function analyzeSentiment(words: string[]): Sentiment {
   let score = 0;
   let matchCount = 0;
 

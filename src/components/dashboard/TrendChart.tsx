@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   LineChart,
@@ -56,17 +56,6 @@ export function TrendChart({ data, className = '' }: TrendChartProps) {
       );
     }
     return null;
-  };
-
-  // Format Y-axis for currency
-  const formatYAxis = (value: number, dataKey: string) => {
-    if (dataKey === 'averageBribe') {
-      if (value >= 1000) {
-        return `${(value / 1000).toFixed(0)}K`;
-      }
-      return value.toString();
-    }
-    return value.toString();
   };
 
   // Toggle line visibility

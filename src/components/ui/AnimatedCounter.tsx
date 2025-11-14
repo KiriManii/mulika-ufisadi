@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface AnimatedCounterProps {
   end: number;
@@ -22,7 +22,7 @@ export function AnimatedCounter({
   const [count, setCount] = useState(start);
   const countRef = useRef(start);
   const startTimeRef = useRef<number | null>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     // Reset animation when end value changes
