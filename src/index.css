@@ -1,0 +1,26 @@
+@import "@fontsource-variable/onest";
+@import "@fontsource/jetbrains-mono";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-primary text-neutral-900 bg-neutral-50;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-primary font-semibold;
+  }
+
+  code,
+  pre {
+    @apply font-secondary;
+  }
+}
