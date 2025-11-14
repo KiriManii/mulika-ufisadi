@@ -4,7 +4,7 @@
  * All 47 counties with codes, names, capitals, and regions
  */
 
-import { County } from '../types/county';
+import type { County } from '../types/county';
 
 export const COUNTIES: County[] = [
   { code: 1, name: 'Mombasa', capital: 'Mombasa City', region: 'Coast' },
