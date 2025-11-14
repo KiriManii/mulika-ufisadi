@@ -10,3 +10,5 @@ export { Report } from './Report';
 export { Dashboard } from './Dashboard';
 export { Map } from './Map';
 export { Rewards } from './Rewards';
+export { About } from './About';
+export { Contact } from './Contact';
